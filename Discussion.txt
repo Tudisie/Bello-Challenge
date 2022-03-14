@@ -1,0 +1,17 @@
+1.Reteaua a fost reprezentata folosind un tablou alocat dinamic (operatorul de dereferentiere) de vectori (containere STL). 
+Solutia implementeaza o lista de adiacenta pentru a reprezenta graful. O alternativa ar fi matricea de adiacenta, care este utila
+pentru a verifica in timp O(1) daca o muchie exista, dar acest lucru nu ne intereseaza. A fost folosita implementarea cu liste
+simplu inlantuite pentru a reduce volumul de memorie (complexitatea in spatiu).
+
+2. In cazul in care aveam muchii cu cost negativ in graf, ar fi trebuit sa folosim algoritmul Bellman-Ford. In cazul in care graful
+avea costuri reale, pozitive, dar diferite, am fi putut folosi algoritmul lui Dijkstra pentru a avea o complexitate in timp mai mica.
+In cazul de fata, toate muchiile au acelasi cost (unitar), ceea ce reduce problema la un algoritm BFS (Parcurgere in latime) modificat:
+Se incepe din nodul A (start) si se retin intr-o coada toate nodurile cu care acesta are muchii. Dupa prima iteratie, stim ca in coada
+avem toate nodurile care necesita un cost 1. Se parcurg aceste noduri si se introduc pe parcurs alte noduri care nu au mai fost intalnite,
+ajungandu-se astfel la un cost in crestere succesiva dupa fiecare iteratie. Parcurgand in latime, avem certitudinea ca nu vom gasi un
+cost mai bun pentru niciun nod pe care l-am intalnit deja in iteratiile precedente.
+
+3. Programul citeste datele de intrare din fisiere text puse la dispozitie, in cazul de fata 3 fisiere. Primul caz acopera situatia 
+unui graf conex care asigura intre 2 noduri cel putin doua cai de lungime diferita. Al doilea caz prezinta situatia unui graf complet,
+in care distanta dintre oricare 2 noduri diferite este de lungime 1. Ultimul caz ilustreaza atat doua cai diferite de lungime diferita,
+cat si situatia unui nod izolat pentru a demonstra posibila inexistenta a unui drum.
